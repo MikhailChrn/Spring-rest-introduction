@@ -28,6 +28,12 @@ public class MyRESTController {
         if (employee == null)
             throw new NoSuchEmployeeException("There is no employee with ID = " + id + " in Database");
 
-            return employee;
+        return employee;
+    }
+
+    @PostMapping("/employees")
+    public Employee addNewEmployee(@RequestBody Employee employee) {
+        employeeService.saveEmployee(employee);
+        return employee;
     }
 }
